@@ -15,8 +15,8 @@ const ctx = canvas.getContext('2d')
 
 video.onloadedmetadata = () => {
     // Dimension
-    canvas.width = video.videoWidth
-    canvas.height = video.videoHeight
+    canvas.width = 1280
+    canvas.height = 720
 
     // Audio
     const audio = new AudioContext()
@@ -25,7 +25,7 @@ video.onloadedmetadata = () => {
     source.connect(stream_dest);
     
     // Stream
-    const video_stream = canvas.captureStream(60)
+    const video_stream = canvas.captureStream(30)
     const audio_stream = stream_dest.stream
     stream_inject = new MediaStream([
         video_stream.getVideoTracks()[0],

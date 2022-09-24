@@ -45,8 +45,11 @@ class Video {
 
                             this.driver.getCurrentUrl()
                                 .then(url => {
-                                    if (!this.init && url === "file:///channels/@me") {
+									url = url.split('/')
+									url = `/${url[url.length - 2]}/${url[url.length - 1]}`
+                                    if (!this.init && url === "/channels/@me") {
                                         this.init = true
+										this.remove_element()
                                         this.open_guild()
                                         this.join(msg)
                                         clearInterval(int1)
@@ -67,6 +70,7 @@ class Video {
                         is_load = true
                         this.duration = result
                         this.in_loading = false
+						this.remove_element()
                         msg.edit("Done, Type `*play` to start playing.")
                         clearInterval(int2)
                     }
@@ -143,11 +147,15 @@ class Stream extends Video {
         super()
         const chrome_options = new chrome.Options()
         headless && chrome_options.addArguments('--headless')
-        chrome_options.addArguments('--no-sandbox')
-        chrome_options.addArguments('--window-size=1280,720')
+        //chrome_options.addArguments('--no-sandbox')
+        chrome_options.addArguments('--window-size=1920,1080')
+		chrome_options.addArguments('--use-fake-ui-for-media-stream')
+		chrome_options.addArguments('--enable-usermedia-screen-capturing')
+		chrome_options.addArguments('--disable-user-media-security')
+		chrome_options.addArguments('--disable-user-media-security=true')
         chrome_options.addArguments('--disable-web-security')
-        chrome_options.addArguments("--disable-gpu")
-        chrome_options.addArguments("--disable-features=NetworkService")
+        chrome_options.addArguments('--disable-gpu')
+        chrome_options.addArguments('--disable-features=NetworkService')
         chrome_options.addArguments('--disable-dev-shm-usage')
         chrome_options.addArguments('--autoplay-policy=no-user-gesture-required')
         chrome_options.addArguments('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36')
@@ -156,6 +164,32 @@ class Stream extends Video {
         this.driver.get(this.client_url)
         this.driver.executeScript(`localStorage.setItem("token", '"${token}"')`)
     }
+
+	remove_element() {
+		this.driver.executeScript(`
+			try {
+				let el = document.getElementsByClassName('notice-3bPHh- colorDefault-22HBa0')
+				el[0].parentNode.removeChild(el[0])
+			} catch (e) {
+				console.error(e)
+			}
+			try {
+				document.getElementsByClassName('close-hZ94c6 closeButton-ryIVwg button-38aScr lookBlank-3eh9lL colorBrand-3pXr91 grow-q77ONN')[0].click()
+			} catch (e) {
+				console.error(e)
+			}
+			try {
+				document.getElementsByClassName('subscribeTooltipButton-rIF3w3 button-38aScr lookInverted-2D7oAl colorBrand-3pXr91 sizeMedium-1AC_Sl grow-q77ONN')[0].click()
+			} catch (e) {
+				console.error(e)
+			}
+			try {
+				document.getElementsByClassName('close-relY5R')[0].click()
+			} catch (e) {
+				console.error(e)
+			}
+		`)
+	}
 
     open_guild() {
         this.driver.executeScript(`document.querySelector('[data-list-item-id="guildsnav___${this.guild_id}"]').click()`)
@@ -179,7 +213,7 @@ class Stream extends Video {
             if( c_inject.scrollTop === (c_inject.scrollHeight - c_inject.offsetHeight))
                 c_inject.scroll(0, 0)
             else
-                c_inject.scroll(0, c_inject.scrollTop + 250)
+                c_inject.scroll(0, c_inject.scrollTop + 100)
         `)
     }
 
