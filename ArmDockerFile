@@ -1,9 +1,9 @@
 FROM ubuntu:20.04
 
 # Install dependencies
-RUN snap install chromium
 RUN apt-get update
 RUN apt-get install -y curl git unzip wget
+RUN snap install chromium
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata build-essential chromium-chromedriver
 
 RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
