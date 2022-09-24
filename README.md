@@ -33,7 +33,7 @@ You can also use `*list` to see added users.
 
 ## Update
 
-- Added support for Arm64. Tested on Ubuntu Arm64 VPS
+- Added support for Arm64. Tested on Ubuntu Arm64 VPS (Can be used with x86-64)
 
 ### Contributing
 Pull requests are welcome
