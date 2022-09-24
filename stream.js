@@ -66,7 +66,6 @@ class Video {
                     if (result) {
                         is_load = true
                         this.duration = result
-                        console.log(result)
                         this.in_loading = false
                         msg.edit("Done, Type `*play` to start playing.")
                         clearInterval(int2)
@@ -147,11 +146,11 @@ class Stream extends Video {
         chrome_options.addArguments('--no-sandbox')
         chrome_options.addArguments('--window-size=1280,720')
         chrome_options.addArguments('--disable-web-security')
-        //chrome_options.addArguments("--disable-gpu")
+        chrome_options.addArguments("--disable-gpu")
         chrome_options.addArguments("--disable-features=NetworkService")
         chrome_options.addArguments('--disable-dev-shm-usage')
         chrome_options.addArguments('--autoplay-policy=no-user-gesture-required')
-        chrome_options.addArguments('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36')
+        chrome_options.addArguments('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36')
         console.log("Webdriver started")
         this.driver = new webdriver.Builder().forBrowser('chrome').setChromeOptions(chrome_options).build()
         this.driver.get(this.client_url)
