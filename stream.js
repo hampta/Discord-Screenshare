@@ -66,6 +66,7 @@ class Video {
                     if (result) {
                         is_load = true
                         this.duration = result
+                        console.log(result)
                         this.in_loading = false
                         msg.edit("Done, Type `*play` to start playing.")
                         clearInterval(int2)
@@ -218,7 +219,7 @@ class Stream extends Video {
                 var streamBtn_inject = document.querySelector('[aria-label="Share Your Screen"]')
                 !streamBtn_inject.className.includes('buttonActive-3FrkXp') &&
                     streamBtn_inject.click()
-        `).catch(e => e)
+        `).catch(e => { console.error(e) })
     }
 
     stop() {
