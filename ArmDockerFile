@@ -4,7 +4,6 @@ FROM ubuntu:20.04
 RUN apt-get update
 RUN apt-get install -y curl git unzip wget
 RUN SNAPCRAFT_SETUP_CORE=1 DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata build-essential chromium-chromedriver
-RUN systemctl start snapd.service
 RUN snap install chromium
 RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
 RUN apt-get install -y nodejs
