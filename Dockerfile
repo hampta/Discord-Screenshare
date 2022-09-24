@@ -15,7 +15,7 @@ RUN yarn install
 COPY .env .
 
 # Install chrome 88
-RUN wget http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_88.0.4324.96-1_amd64.deb
+RUN wget http://mirror.cs.uchicago.edu/google-chrome/pool/main/g/google-chrome-stable/google-chrome-stable_88.0.4324.96-1_amd64.deb
 RUN apt-get install -y ./google-chrome-stable_88.0.4324.96-1_amd64.deb
 
 # Install chromedriver 88
