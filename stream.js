@@ -144,7 +144,7 @@ class Stream extends Video {
         const chrome_options = new chrome.Options()
         headless && chrome_options.addArguments('--headless')
         chrome_options.addArguments('--no-sandbox')
-        chrome_options.addArguments('--window-size=1920,1080')
+        chrome_options.addArguments('--window-size=1280,720')
         chrome_options.addArguments('--disable-web-security')
         chrome_options.addArguments("--disable-gpu")
         chrome_options.addArguments("--disable-features=NetworkService")
