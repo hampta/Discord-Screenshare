@@ -14,7 +14,7 @@ WORKDIR Discord-Screenshare
 RUN yarn install
 COPY .env .
 
-RUN whereis chromedriver
+RUN chromedriver --version
 
 # Start Bot
 RUN yarn start
