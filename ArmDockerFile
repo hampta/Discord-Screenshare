@@ -14,7 +14,7 @@ WORKDIR Discord-Screenshare
 RUN yarn install
 COPY .env .
 
-# Install chromedriver 89
+# Install chromedriver 85
 RUN wget https://chromedriver.storage.googleapis.com/85.0.4183.83/chromedriver_linux64.zip
 RUN unzip chromedriver_linux64.zip
 RUN mv chromedriver /bin
