@@ -31,5 +31,9 @@ Use the following commands to add or remove other users
 
 You can also use `*list` to see added users.
 
+## Update
+
+- Added support for Arm64. Tested on Ubuntu Arm64 VPS
+
 ### Contributing
 Pull requests are welcome
