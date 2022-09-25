@@ -9,7 +9,7 @@ RUN apt-get install -y nodejs
 RUN npm i -g yarn
 
 # Clone Repo
-RUN VERSION_CONTROL=6
+RUN VERSION_CONTROL=7
 RUN git clone https://github.com/SahrulGamerz/Discord-Screenshare.git
 WORKDIR Discord-Screenshare
 RUN yarn install
